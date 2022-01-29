@@ -2,12 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import { RegisterPage } from "./components/register";
 import reportWebVitals from "./reportWebVitals";
 import "@themesberg/flowbite";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<RegisterPage />
 	</React.StrictMode>,
 	document.getElementById("root")
 );
