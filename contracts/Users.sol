@@ -28,7 +28,7 @@ contract Users {
 
     // registers user with the required data
     // event will be emitted after registration
-    function regiter(
+    function register(
         string memory name,
         string memory phonenumber,
         string memory DOB,
@@ -41,7 +41,7 @@ contract Users {
         if (users[enigmaId].isResgistered) {
             emit userRegisterResponse(
                 msg.sender,
-                true,
+                false,
                 "user already registered!"
             );
 
@@ -57,7 +57,25 @@ contract Users {
     }
 
     // getUser returns user data for a given enigma id
-    function getUser() public view returns (User memory) {
-        return users[addresstoenigmaId[msg.sender]];
+    function getUser()
+        public
+        view
+        returns (
+            string memory,
+            string memory,
+            string memory,
+            string memory,
+            string memory
+        )
+    {
+        User memory user = users[addresstoenigmaId[msg.sender]];
+
+        return (
+            user.enigmaId,
+            user.name,
+            user.phonenumber,
+            user.DOB,
+            user.email
+        );
     }
 }
