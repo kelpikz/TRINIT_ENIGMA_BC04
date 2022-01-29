@@ -57,25 +57,7 @@ contract Users {
     }
 
     // getUser returns user data for a given enigma id
-    function getUser(string memory enigmaId)
-        public
-        view
-        returns (
-            string memory,
-            string memory,
-            string memory,
-            string memory,
-            string memory
-        )
-    {
-        User memory user = users[enigmaId];
-
-        return (
-            user.enigmaId,
-            user.name,
-            user.phonenumber,
-            user.DOB,
-            user.email
-        );
+    function getUser() public view returns (User memory) {
+        return users[addresstoenigmaId[msg.sender]];
     }
 }
