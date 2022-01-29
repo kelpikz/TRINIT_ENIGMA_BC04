@@ -1,14 +1,27 @@
-import ipfsClient from 'ipfs-http-client';
+import { create } from 'ipfs-http-client';
+import { decryptFile } from './encAndDec';
+
+const ipfs = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
 
 export const IPFSAdd = async (file) => {
-    const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
+    console.log(file);
     const result = await ipfs.add(file);
-    return result[0].hash;
+    console.log(result);
+    return result.path;
 };
 
 //Get Files from IPFS
 export const IPFSGet = async (hash) => {
-    const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
-    const result = await ipfs.get(hash);
-    return result[0].content;
-}
+    await fetch(`https://ipfs.infura.io/ipfs/${hash}`)
+        .then(res => res.arrayBuffer())
+        .then(buf => {
+            // convert to file
+            const file = new File([buf], 'file.txt', { type: 'text/plain' });
+            decryptFile(file, 'password').then(decryptedFile => {
+                console.log(decryptedFile);
+            }
+            );
+        });
+
+};
+
