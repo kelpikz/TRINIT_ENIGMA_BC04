@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { RegisterPage } from "./components/register";
+// import { RegisterPage } from "./components/register";
 import reportWebVitals from "./reportWebVitals";
 import "@themesberg/flowbite";
 import { ChakraProvider } from "@chakra-ui/react";
