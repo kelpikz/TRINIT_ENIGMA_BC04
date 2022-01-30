@@ -19,6 +19,10 @@ const companySchema = new mongoose.Schema({
 		required: true,
 		unique: true
 	},
+	redirectURL:{
+		type: String,
+		required: true
+	},
 });
 
 const Company = mongoose.model('Company', companySchema);

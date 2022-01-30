@@ -11,14 +11,15 @@ connectDB();
 app.get("/", (req, res) => res.json({ hello: "world" }));
 
 app.post("/company/register", (req, res) => {
-	const { name, email } = req.query;
+	const { name, email, redirectURL } = req.query;
 	const APISecret = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 	const APIId = sha256(email);
 	const company = new Company({
 		name,
 		email,
 		APISecret,
-		APIId
+		APIId,
+		redirectURL,
 	});
 	company.save((err, company) => {
 		if (err) {
