@@ -86,20 +86,21 @@ import { IPFSAdd } from '../utils/ipfs';
 export const FileUpload = () => {
     const submit = async(e) => {
         e.preventDefault()
+        const key = localStorage.getItem('passkey')
         if(e.target.getElementsByClassName('sr-only')[0].files[0]){
-            const enc = await encryptFile(e.target.getElementsByClassName('sr-only')[0].files[0], 'test')
+            const enc = await encryptFile(e.target.getElementsByClassName('sr-only')[0].files[0], key)
             await IPFSAdd(enc)
         }
         if(e.target.getElementsByClassName('sr-only')[1].files[0]){
-            const enc = await encryptFile(e.target.getElementsByClassName('sr-only')[1].files[0], 'test')
+            const enc = await encryptFile(e.target.getElementsByClassName('sr-only')[1].files[0], key)
             await IPFSAdd(enc)
         }
         if(e.target.getElementsByClassName('sr-only')[2].files[0]){
-            const enc = await encryptFile(e.target.getElementsByClassName('sr-only')[2].files[0], 'test')
+            const enc = await encryptFile(e.target.getElementsByClassName('sr-only')[2].files[0], key)
             await IPFSAdd(enc)
         }
         if(e.target.getElementsByClassName('sr-only')[3].files[0]){
-            const enc = await encryptFile(e.target.getElementsByClassName('sr-only')[3].files[0], 'test')
+            const enc = await encryptFile(e.target.getElementsByClassName('sr-only')[3].files[0], key)
             await IPFSAdd(enc)
         }
     }

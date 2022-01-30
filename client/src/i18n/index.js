@@ -20,7 +20,4 @@ i18n
     }
   });
 
-  i18n.t('hello');
-
-
 export default i18n;

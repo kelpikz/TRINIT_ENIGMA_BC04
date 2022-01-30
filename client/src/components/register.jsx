@@ -7,24 +7,28 @@ import clsx from "clsx";
 function Registerpage() {
 	const { accts, ins } = useContext(Web3Context);
 
-	// listening to event from blockchain i.e contract
-	if (ins.events) {
-		ins.events.userRegisterResponse().on("data", (e) => {
-			if (e.returnValues.success) {
-				toast.success(e.returnValues.message);
-			} else {
+  	if (ins.events) {
+    	ins.events
+      	.userRegisterResponse()
+      	.on("data", (e) => {
+			  if(e.returnValues.success){
+ 				toast.success(e.returnValues.message);
+			  }else{
 				toast.error(e.returnValues.message);
-			}
-		});
-	}
-
-	const [email, setEmail] = useState("");
-	const [phonenumber, setPhonenumber] = useState("");
-	const [dob, setdob] = useState("");
-	const [name, setName] = useState("");
+			  }
+			 
+		  });
+  	}
+	
+	const [email, setEmail] =useState('');
+	const [phonenumber, setPhonenumber] = useState('');
+	const [dob, setdob] = useState('');
+	const [name, setName] = useState('');
+	const [passkey, setPasskey] = useState('');
 
 	const onSubmit = async () => {
-		if (email === "" || phonenumber === "" || dob === "" || name === "") {
+		if (email === '' || phonenumber === '' || dob === '' || name === ''|| passkey === '') {
+			console.log(email, phonenumber, dob, name, passkey);
 			toast.error("all fields are required");
 			return;
 		}
@@ -33,6 +37,7 @@ function Registerpage() {
 			await ins.methods
 				.register(name, phonenumber, dob, email)
 				.send({ from: accts[0] });
+			localStorage.setItem('passkey', passkey);
 		} catch (error) {
 			toast.error("error in registering, please try again");
 			console.log(error);
@@ -100,7 +105,7 @@ function Registerpage() {
 							value={dob}
 							variant="outline"
 							placeholder="Enter your DOB"
-							type="text"
+							type="date"
 							borderColor="GrayText"
 							textColor="black"
 							isRequired
@@ -117,6 +122,22 @@ function Registerpage() {
 							variant="outline"
 							placeholder="Enter your Phone Number"
 							type="text"
+							borderColor="GrayText"
+							textColor="black"
+							isRequired
+							mb={5}
+						/>
+					</FormControl>
+					<FormControl isRequired>
+						<p className="text-gray-600 font-medium mb-2 pl-1">
+							Passkey :{" "}
+						</p>
+						<Input
+							onChange={(e) => setPasskey(e.target.value)}
+							value={passkey}
+							variant="outline"
+							placeholder="Enter your Passkey"
+							type="password"
 							borderColor="GrayText"
 							textColor="black"
 							isRequired
