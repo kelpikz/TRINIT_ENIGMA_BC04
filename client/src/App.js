@@ -11,7 +11,7 @@ function App() {
 					<Route exact path="/" element={<Components.Landing />} />
 					<Route exact path="/register" element={<Components.RegisterPage />} />
 					<Route exact path="/rsa" element={<Components.RSA />} />
-					<Route exact path="/upload" element={<Components.FileUpload />} />
+					<Route exact path="/upload" element={<Components.FileUploadCmpt />} />
 				</Routes>
 			</Router>
 		</Web3ContextProvider>

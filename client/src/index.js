@@ -6,6 +6,8 @@ import reportWebVitals from "./reportWebVitals";
 import "@themesberg/flowbite";
 import { ChakraProvider } from "@chakra-ui/react";
 
+import "./i18n";
+
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider>
