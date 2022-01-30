@@ -8,7 +8,7 @@ function Registerpage() {
 	const { accts, ins } = useContext(Web3Context);
 
 	    // listening to event from blockchain i.e contract
-  	if (ins.events) {
+  	if (ins && ins.events) {
     	ins.events
       	.userRegisterResponse()
       	.on("data", (e) => {
