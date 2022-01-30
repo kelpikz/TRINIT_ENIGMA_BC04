@@ -60,7 +60,7 @@ function Registerpage() {
 					<div className="mt-10">
 						<h1 className="text-9xl font-bold text-text-accent-1">REGISTER</h1>
 						<p className="text-3xl text-gray-400 pl-2 w-4/5">
-							We assure you, no one other than you has access to your data
+							We assure you, only you are in control of your data.
 						</p>
 					</div>
 				</Box>

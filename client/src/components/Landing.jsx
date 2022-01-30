@@ -3,7 +3,6 @@ import React, { Suspense } from "react";
 import clsx from "clsx";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import logo from "../deltaLogoWhite.png";
 
 export const LandingPage = () => {
   const navigate = useNavigate();
@@ -37,9 +36,9 @@ export const Landing = () => {
   return (
     <Suspense
       fallback={
-        <div className="center">
-          <img className="img1" src={logo} alt="logo" />
-        </div>
+		<div className="center">
+        Loading...
+      </div>
       }
     >
       <LandingPage />
