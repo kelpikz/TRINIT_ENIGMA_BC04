@@ -83,7 +83,7 @@ import { IPFSAdd } from '../utils/ipfs';
 //   )
 // };
 
-export const FileUploadCmpt = () => {
+export const FileUpload = () => {
     const submit = async(e) => {
         e.preventDefault()
         if(e.target.getElementsByClassName('sr-only')[0].files[0]){

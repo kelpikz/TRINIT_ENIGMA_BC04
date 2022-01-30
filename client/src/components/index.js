@@ -1,6 +1,6 @@
 import { Landing } from "./Landing";
 import { RSA } from "./RsaTesting";
 import RegisterPage from "./register";
-import { FileUploadCmpt } from "./FileUpload";
+import { FileUpload } from "./FileUpload";
 
-export { Landing, RSA, RegisterPage, FileUploadCmpt };
+export { Landing, RSA, RegisterPage, FileUpload };
