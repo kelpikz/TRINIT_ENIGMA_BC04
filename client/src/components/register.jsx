@@ -7,10 +7,12 @@ import clsx from "clsx";
 function Registerpage() {
 	const { accts, ins } = useContext(Web3Context);
 
+	    // listening to event from blockchain i.e contract
   	if (ins.events) {
     	ins.events
       	.userRegisterResponse()
       	.on("data", (e) => {
+			  console.log(e.returnValues);
 			  if(e.returnValues.success){
  				toast.success(e.returnValues.message);
 			  }else{
@@ -38,6 +40,8 @@ function Registerpage() {
 				.register(name, phonenumber, dob, email)
 				.send({ from: accts[0] });
 			localStorage.setItem('passkey', passkey);
+			await ins.methods.register(name,phonenumber,dob,email).send({from: accts[0]});
+			console.log("registered");
 		} catch (error) {
 			toast.error("error in registering, please try again");
 			console.log(error);

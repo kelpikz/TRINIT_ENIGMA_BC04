@@ -13,7 +13,12 @@ contract Documents is Users {
     mapping(string => Document) public tenthdocuments;
     mapping(string => Document) public twelthdocumets;
 
-    event uploadDocumentResponse(address user, bool success, string message);
+    event uploadDocumentResponse(
+        address user,
+        bool success,
+        string message,
+        string docType
+    );
 
     function uploadDocument(string memory ipfsHash, string memory documenttype)
         public
@@ -22,7 +27,8 @@ contract Documents is Users {
             emit uploadDocumentResponse(
                 msg.sender,
                 false,
-                "user not registered"
+                "user not registered",
+                ""
             );
         }
 
@@ -38,7 +44,8 @@ contract Documents is Users {
             emit uploadDocumentResponse(
                 msg.sender,
                 true,
-                "aadhar document successfully updated"
+                "aadhar document successfully updated",
+                "aadhar"
             );
             return;
         }
@@ -54,7 +61,8 @@ contract Documents is Users {
             emit uploadDocumentResponse(
                 msg.sender,
                 true,
-                "pan document successfully updated"
+                "birth document successfully updated",
+                "birth"
             );
             return;
         }
@@ -70,7 +78,8 @@ contract Documents is Users {
             emit uploadDocumentResponse(
                 msg.sender,
                 true,
-                "10 th certificate document successfully updated"
+                "10 th certificate document successfully updated",
+                "Xth"
             );
             return;
         }
@@ -86,7 +95,8 @@ contract Documents is Users {
             emit uploadDocumentResponse(
                 msg.sender,
                 true,
-                "12 th certificate document successfully updated"
+                "12 th certificate document successfully updated",
+                "XIIth"
             );
             return;
         }
@@ -94,7 +104,8 @@ contract Documents is Users {
         emit uploadDocumentResponse(
             msg.sender,
             false,
-            "unsupported certificate document"
+            "unsupported certificate document",
+            ""
         );
     }
 

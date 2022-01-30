@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 // import { Button, FormControl, FormErrorMessage, FormLabel, Icon, InputGroup } from '@chakra-ui/react';
 // import { useForm, } from 'react-hook-form';
 // import { FiFile } from 'react-icons/fi';
 import { encryptFile } from '../utils/encAndDec';
+import { Web3Context } from "../context/Web3Context";
 import { IPFSAdd } from '../utils/ipfs';
+import { toast } from './Toast/useToast';
 
 
 // const FileUpload = (props) => {
@@ -84,24 +86,68 @@ import { IPFSAdd } from '../utils/ipfs';
 // };
 
 export const FileUpload = () => {
+    const { accts, ins } = useContext(Web3Context);
+
+    if (ins.events) {
+        ins.events
+      	.uploadDocumentResponse()
+      	.on("data", (e) => {
+			  if(e.returnValues.success){
+ 				toast.success(e.returnValues.message);
+			  }else{
+				toast.error(e.returnValues.message);
+			  }
+		  });
+    }
+
     const submit = async(e) => {
         e.preventDefault()
         const key = localStorage.getItem('passkey')
         if(e.target.getElementsByClassName('sr-only')[0].files[0]){
-            const enc = await encryptFile(e.target.getElementsByClassName('sr-only')[0].files[0], key)
-            await IPFSAdd(enc)
+            try {
+                const enc = await encryptFile(e.target.getElementsByClassName('sr-only')[0].files[0], key)
+                const ipfsHash = await IPFSAdd(enc);
+                await ins.methods.uploadDocument(ipfsHash,"aadhar").send({from: accts[0]});;
+                toast.success("successfully uploaded aadhar document");
+            } catch (error) {
+                console.log(error);
+                toast.error("error uploading aadhar document");
+            }
+
         }
         if(e.target.getElementsByClassName('sr-only')[1].files[0]){
-            const enc = await encryptFile(e.target.getElementsByClassName('sr-only')[1].files[0], key)
-            await IPFSAdd(enc)
+            try {
+                const enc = await encryptFile(e.target.getElementsByClassName('sr-only')[1].files[0], key)
+                const ipfsHash = await IPFSAdd(enc);
+                await ins.methods.uploadDocument(ipfsHash,"pan").send({from: accts[0]});;
+                toast.success("successfully uploaded birth certificate");
+            } catch (error) {
+                console.log(error);
+                toast.error("error uploading birth certificate");
+            }
+
         }
         if(e.target.getElementsByClassName('sr-only')[2].files[0]){
-            const enc = await encryptFile(e.target.getElementsByClassName('sr-only')[2].files[0], key)
-            await IPFSAdd(enc)
+            try {
+                const enc = await encryptFile(e.target.getElementsByClassName('sr-only')[2].files[0], key)
+                const ipfsHash = await IPFSAdd(enc)
+                await ins.methods.uploadDocument(ipfsHash,"10th").send({from: accts[0]});;
+                toast.success("successfully uploaded Xth certificate");
+            } catch (error) {
+                console.log(error);
+                toast.error("error uploading Xth certificate");
+            }
+
         }
         if(e.target.getElementsByClassName('sr-only')[3].files[0]){
-            const enc = await encryptFile(e.target.getElementsByClassName('sr-only')[3].files[0], key)
-            await IPFSAdd(enc)
+            try {
+                const enc = await encryptFile(e.target.getElementsByClassName('sr-only')[2].files[0], key)
+                const ipfsHash = await IPFSAdd(enc)
+                await ins.methods.uploadDocument(ipfsHash,"12th").send({from: accts[0]});;
+            } catch (error) {
+                console.log(error);
+                toast.error("error uploading Xth certificate");
+            }
         }
     }
 
