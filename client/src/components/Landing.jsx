@@ -2,18 +2,18 @@ import "../App.css";
 import React, { Suspense } from 'react';
 import clsx from "clsx";
 import { useNavigate } from "react-router-dom";
-import { Trans, useTranslation } from 'react-i18next';
+import {  useTranslation } from 'react-i18next';
 
 export const LandingPage = () => {
 	const navigate = useNavigate();
-	const {t, i18n} = useTranslation()
+	const {t} = useTranslation()
 	return (
 		<>
 			<div className="p-20 h-screen flex justify-center items-start flex-col">
-				<h1 className="text-6xl text-text font-bold"><Trans>Welcome to Enigma 👋</Trans></h1>
+				<h1 className="text-6xl text-text font-bold">{t('welcome_string')}</h1>
 				<br />
 				<p className="text-text-accent-2 mt-5 text-lg font-medium">
-					{t('A one stop spot for all your authentication needs.')}
+					{t('main_string')}
 				</p>
 				<br />
 				<button
@@ -25,7 +25,7 @@ export const LandingPage = () => {
 						navigate("/register");
 					}}
 				>
-					{t('Start the journey')}
+					{t('jny')}
 				</button>
 			</div>
 		</>

@@ -1,23 +1,24 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
+import i18next from "i18next";
+import HttpBackend from "i18next-http-backend";
+import LanguageDetector from "i18next-browser-languagedetector";
+import { initReactI18next } from "react-i18next";
 
-import Backend from 'i18next-http-backend';
-import LanguageDetector from 'i18next-browser-languagedetector';
+const apiKey = "T89WBClQTmg2h_T8HA3rDQ";
+const loadPath = `https://api.i18nexus.com/project_resources/translations/{{lng}}/{{ns}}.json?api_key=${apiKey}`;
 
-
-i18n
-  .use(Backend)
+i18next
+  .use(HttpBackend)
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    ns: ['translation'],
-    defaultNS: ['translation'],
-    fallbackLng: ['dev'],
-    debug: true,
+    fallbackLng: "en",
 
-    interpolation: {
-      escapeValue: false,
+    ns: ["default"],
+    defaultNS: "default",
+
+    supportedLngs: ["en","fr"],
+    
+    backend: {
+      loadPath: loadPath
     }
-  });
-
-export default i18n;
+  })
