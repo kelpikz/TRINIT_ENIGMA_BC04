@@ -17,6 +17,8 @@ contract Users {
         string DOB;
         string email;
         bool isResgistered;
+        uint256 totalTransactions;
+        uint256 trustedTransactions;
     }
 
     // registered users
@@ -50,7 +52,16 @@ contract Users {
 
         totalUsers++;
 
-        users[enigmaId] = User(enigmaId, name, phonenumber, DOB, email, true);
+        users[enigmaId] = User(
+            enigmaId,
+            name,
+            phonenumber,
+            DOB,
+            email,
+            true,
+            0,
+            0
+        );
         addresstoenigmaId[msg.sender] = enigmaId;
 
         emit userRegisterResponse(msg.sender, true, "registered successfully!");

@@ -14,9 +14,11 @@ contract Transactions is Documents {
 
     event addTransactionResponse(address user, bool success, string message);
 
-    function addTransaction(string memory company, string[] memory documents)
-        public
-    {
+    function addTransaction(
+        string memory company,
+        string[] memory documents,
+        bool isTrusted
+    ) public {
         if (!users[addresstoenigmaId[msg.sender]].isResgistered) {
             emit addTransactionResponse(
                 msg.sender,
@@ -36,6 +38,12 @@ contract Transactions is Documents {
             true,
             "transaction added successfully"
         );
+
+        users[addresstoenigmaId[msg.sender]].totalTransactions += 1;
+
+        if (isTrusted) {
+            users[addresstoenigmaId[msg.sender]].trustedTransactions += 1;
+        }
     }
 
     function getTransaction() public view returns (Transaction[] memory) {
