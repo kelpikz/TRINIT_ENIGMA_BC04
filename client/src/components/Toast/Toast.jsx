@@ -1,9 +1,9 @@
-import React from 'react';
-import 'react-toastify/dist/ReactToastify.min.css';
-import {ToastContainer} from 'react-toastify';
+import React from "react";
+import "react-toastify/dist/ReactToastify.min.css";
+import { ToastContainer } from "react-toastify";
 
 // https://github.com/fkhadra/react-toastify
-const Toast = () => {
+const Toast = ({ children }) => {
 	return (
 		<div>
 			<ToastContainer
@@ -17,6 +17,7 @@ const Toast = () => {
 				pauseOnFocusLoss
 				pauseOnHover
 			/>
+			{children}
 		</div>
 	);
 };
