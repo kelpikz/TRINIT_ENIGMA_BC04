@@ -14,10 +14,17 @@ function UserContextProvider(props) {
   const [user, setUser] = useState(null);
 
   const fetchUser = useCallback(async () => {
-    if (ins.methods && accts[0]) {
+    if (ins || accts) {
       try {
-        const response = await ins.methods.getUser().send({ from: accts[0] });
+        const response = await ins.methods.getUser().call({ from: accts[0] });
         console.log(response);
+        setUser({
+          enigmaId: response[0],
+          name: response[1],
+          phoneNumber: response[2],
+          dob: response[3],
+          email: response[4],
+        });
       } catch (error) {
         console.log(error);
       }
@@ -26,7 +33,8 @@ function UserContextProvider(props) {
 
   useEffect(() => {
     fetchUser();
-  }, [fetchUser, ins]);
+    // console.log(user);
+  }, [accts, ins]);
 
   return (
     <userContext.Provider value={{ user }}>

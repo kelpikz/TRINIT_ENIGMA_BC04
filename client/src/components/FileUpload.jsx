@@ -88,7 +88,7 @@ import { toast } from './Toast/useToast';
 export const FileUpload = () => {
     const { accts, ins } = useContext(Web3Context);
 
-    if (ins.events) {
+    if (ins && ins.events) {
         ins.events
       	.uploadDocumentResponse()
       	.on("data", (e) => {
