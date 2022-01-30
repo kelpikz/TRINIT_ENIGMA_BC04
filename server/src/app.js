@@ -3,6 +3,7 @@ import morgan from "morgan";
 import { config } from "./config/config";
 import { connectDB } from "./config/db";
 import Company from "./models/company";
+import Transaction from "./models/transaction";
 import { sha256 } from "./utils/crypto";
 
 const app = express();
@@ -48,6 +49,51 @@ app.get("/company/getDetails", (req, res) => {
 		});
 	});
 });
+
+app.get("/transaction/start", (_, res) => {
+	res.json({
+		UUId: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+	});
+});
+
+app.post("/transaction/upload/:UUId", (req, res) => {
+	const { UUId } = req.params;
+	const { aadhar, birthCertificate, XthCertificate, XIIthCertificate } = req.query;
+	const transaction = new Transaction({
+		UUId,
+		aadhar,
+		birthCertificate,
+		XthCertificate,
+		XIIthCertificate,
+	});
+	transaction.save((err, transaction) => {
+		if (err) {
+			return res.status(400).json({
+				error: err
+			});
+		}
+		return res.json({
+			message: "Transaction uploaded successfully",
+			transaction
+		});
+	});
+});
+
+app.get("/transaction/upload/:UUId", (req, res) => {
+	const { UUId } = req.params;
+	Transaction.findOne({ UUId }, (err, transaction) => {
+		if (err) {
+			return res.status(400).json({
+				error: "Transaction not found"
+			});
+		}
+		return res.json({
+			message: "Transaction found",
+			transaction
+		});
+	});
+});
+	
 
 app.listen(config.port, () => {
 	console.log("listening on", config.port);
