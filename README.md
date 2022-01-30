@@ -1,6 +1,8 @@
 # trinitt-hack
 Tri nitt hack
 
+## [drive link](https://drive.google.com/drive/folders/1Bd7mzpcSckeBPo4V3UosWvCrrCUdSGiM?usp=sharing)
+
 ## Introduction
 Identity Management
 
@@ -28,12 +30,10 @@ Facebook or Google are being called as the “middlemen of trust”.
 * Node.js
 * Express
 * MongoDB
-* Mongoose
 * Truffle
 * Ganache
 * Web3
 * Solidity
-* MetaMask
 * Ethereum
 * i18n
 * TailwindCSS
@@ -41,7 +41,7 @@ Facebook or Google are being called as the “middlemen of trust”.
 * FlowByte
 * openpgp specifcations
 * IPFS
-* CryptoJS
+* elliptic curve cryptography
 
 
 ## Features
@@ -60,10 +60,15 @@ Facebook or Google are being called as the “middlemen of trust”.
 
 implemented oauth2.0 spec based authorization flow
 
-### flow
-- company/goverment body request for user data
-- user will be notified about the request
+### Flow
+- Company/government body request for user data
+- User will be notified about the request
+- User can accept/reject client request
+- All the files data will be fetched from the ipfs and ethereum network
+- Fetched files will be encrypted with the client public key will be send back (using elliptic curve cryptography)
 
+### TODO
+- consent flow frontend integration
 
 ## Install truffle
 ```bash
