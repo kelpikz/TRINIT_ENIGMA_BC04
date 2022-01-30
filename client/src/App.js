@@ -10,7 +10,9 @@ import { Navbar } from "./components/Navbar";
 function App() {
 	return (
 		<Web3ContextProvider>
+			<UserContextProvider>
 			<ToastProvider>
+				<Navbar />
 				<Router>
 					<Routes>
 						<Route exact path="/" element={<Components.Landing />} />
@@ -35,6 +37,7 @@ function App() {
 					</Routes>
 				</Router>
 			</ToastProvider>
+			</UserContextProvider>
 		</Web3ContextProvider>
 	);
 }
