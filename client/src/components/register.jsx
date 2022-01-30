@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Box, Center, Heading, FormControl, Input } from "@chakra-ui/react";
+import { Box, Center, FormControl, Input } from "@chakra-ui/react";
 import { Web3Context } from "../context/Web3Context";
 import { toast } from "./Toast/useToast";
 import clsx from "clsx";
@@ -42,10 +42,24 @@ function Registerpage() {
 	return (
 		<Box w="100%" h="100vh" backgroundColor="#000000">
 			<Center h="100vh">
-				<Box borderRadius={5} backgroundColor="white" w="500px" p={8}>
-					<Heading mb={8} as="h3" size="xl" className="text-black">
+				<Box borderRadius={5} w="1000px" h="500px" p={8}>
+					<div className="mt-10">
+						<h1 className="text-9xl font-bold">REGISTER</h1>
+						<p className="text-3xl text-gray-400 pl-2 w-4/5">
+							We assure you, no one other than you has access to your data
+						</p>
+					</div>
+				</Box>
+				<Box
+					borderRadius={5}
+					backgroundColor="white"
+					w="500px"
+					p={8}
+					className="register"
+				>
+					{/* <Heading mb={8} as="h3" size="xl" className="text-black">
 						Register
-					</Heading>
+					</Heading> */}
 
 					<FormControl isRequired>
 						<p className="text-gray-600 font-medium mb-2 pl-1">Email : </p>
@@ -56,6 +70,7 @@ function Registerpage() {
 							placeholder="Enter your email"
 							type="email"
 							borderColor="GrayText"
+							textColor="black"
 							isRequired
 							mb={5}
 						/>
@@ -70,6 +85,7 @@ function Registerpage() {
 							placeholder="Enter your name"
 							borderColor="GrayText"
 							type="text"
+							textColor="black"
 							isRequired
 							mb={5}
 						/>
@@ -86,6 +102,7 @@ function Registerpage() {
 							placeholder="Enter your DOB"
 							type="text"
 							borderColor="GrayText"
+							textColor="black"
 							isRequired
 							mb={5}
 						/>
@@ -101,6 +118,7 @@ function Registerpage() {
 							placeholder="Enter your Phone Number"
 							type="text"
 							borderColor="GrayText"
+							textColor="black"
 							isRequired
 							mb={5}
 						/>

@@ -3,3 +3,6 @@
   padding: 2rem 5rem;
   background: var(--accent-1) !important;
 } */
+.register {
+	transform: translate(-25%, 0);
+}
