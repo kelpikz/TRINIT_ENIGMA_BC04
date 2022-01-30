@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d dist",
+    "start": "rm -rf dist/ && npm run build && node dist/app.js",
+    "dev": "nodemon --exec babel-node src/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.1.8",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.12",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "nodemon": "^2.0.15"
+  }
+}
