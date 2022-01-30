@@ -5,12 +5,14 @@ import UserContextProvider from "./context/UserContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import * as Components from "./components";
 import ToastProvider from "./components/Toast/Toast";
+import { Navbar } from "./components/Navbar";
 
 function App() {
   return (
     <Web3ContextProvider>
       <UserContextProvider>
         <ToastProvider>
+			<Navbar/>
           <Router>
             <Routes>
               <Route exact path="/" element={<Components.Landing />} />

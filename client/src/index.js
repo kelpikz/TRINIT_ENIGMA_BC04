@@ -5,12 +5,15 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "@themesberg/flowbite";
 import { ChakraProvider } from "@chakra-ui/react";
+import logo from "./deltaLogoWhite.png";
 
 import "./i18n";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div className="center">
+        <img className="img1" src={logo} alt="logo" />
+      </div>}>
     <ChakraProvider>
       <App />
     </ChakraProvider>

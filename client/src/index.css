@@ -31,3 +31,49 @@ body {
 	min-width: 100%;
 	background-color: var(--background);
 }
+
+.img1{
+    margin:30px;
+    height:100px;
+    width:100px;
+    object-fit:contain;
+    animation-name: spinRotation;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+}
+
+.img2{
+    height:100px;
+    width:100px;
+    object-fit:contain;
+    animation-name: spinRotation;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+}
+
+.center{
+	position: absolute;
+	top: calc(50% - 50px);
+	left: calc(50% - 50px);
+}
+
+@keyframes spinRotation
+{
+    0%{transform: rotateY(0deg);}
+    33%{transform: rotateY(120deg);}
+    66%{transform: rotateY(240deg);}
+    100%{transform: rotateY(360deg);}
+}
+
+body::-webkit-scrollbar-track {
+	background-color: var(--background-1);
+}
+
+body::-webkit-scrollbar {
+	width: 9px;
+	background-color:#000000;
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: #FFF;
+}
