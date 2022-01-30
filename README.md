@@ -49,11 +49,20 @@ Facebook or Google are being called as the “middlemen of trust”.
 * Blockchain based identity management
 * Uploading and storing of documents
 * End to end encryption of documents
-* OAuth2.0 based authorization of users and access to resources
+* OAuth2.0 spec based authorization of users and access to resources
 * File management
 * Company registration
 * Transaction management
 * File transaction score - Trust score
+
+## Proposed Method
+![flow](flow.png)
+
+implemented oauth2.0 spec based authorization flow
+
+### flow
+- company/goverment body request for user data
+- user will be notified about the request
 
 
 ## Install truffle
