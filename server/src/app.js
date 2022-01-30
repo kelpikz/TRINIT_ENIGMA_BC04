@@ -1,9 +1,13 @@
 import express from "express";
+import morgan from "morgan";
+import { config } from "./config/config";
+import { connectDB } from "./config/db";
 
 const app = express();
-
+app.use(morgan("dev"));
+connectDB();
 app.get("/", (req, res) => res.json({ hello: "world" }));
 
-app.listen(9000, () => {
-	console.log("listening on 9000");
+app.listen(config.port, () => {
+	console.log("listening on", config.port);
 });
