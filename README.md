@@ -70,6 +70,13 @@ implemented oauth2.0 spec based authorization flow
 ### TODO
 - consent flow frontend integration
 
+### screen shots
+| ![](./images/Screenshot%20from%202022-01-30%2010-51-16.png) | ![](./images/Screenshot%20from%202022-01-30%2013-38-43.png) |
+|:--:|:--:|
+| ![](./images/Screenshot%20from%202022-01-30%2013-39-33.png) | ![](./images/Screenshot%20from%202022-01-30%2014-21-34.png) | 
+| ![](./images/WhatsApp%20Image%202022-01-30%20at%2012.20.31%20PM.jpeg) | ![](./images/WhatsApp%20Image%202022-01-30%20at%201.12.55%20PM.jpeg) |
+| ![](./images/WhatsApp%20Image%202022-01-30%20at%202.20.10%20PM.jpeg) | ![](./images/WhatsApp%20Image%202022-01-30%20at%202.22.10%20PM.jpeg) |
+
 ## Install truffle
 ```bash
     npm i -g truffle
