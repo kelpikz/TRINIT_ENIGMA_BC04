@@ -7,29 +7,32 @@ import clsx from "clsx";
 function Registerpage() {
 	const { accts, ins } = useContext(Web3Context);
 
-	    // listening to event from blockchain i.e contract
-  	if (ins && ins.events) {
-    	ins.events
-      	.userRegisterResponse()
-      	.on("data", (e) => {
-			  console.log(e.returnValues);
-			  if(e.returnValues.success){
- 				toast.success(e.returnValues.message);
-			  }else{
+	// listening to event from blockchain i.e contract
+	if (ins && ins.events) {
+		ins.events.userRegisterResponse().on("data", (e) => {
+			console.log(e.returnValues);
+			if (e.returnValues.success) {
+				toast.success(e.returnValues.message);
+			} else {
 				toast.error(e.returnValues.message);
-			  }
-			 
-		  });
-  	}
-	
-	const [email, setEmail] =useState('');
-	const [phonenumber, setPhonenumber] = useState('');
-	const [dob, setdob] = useState('');
-	const [name, setName] = useState('');
-	const [passkey, setPasskey] = useState('');
+			}
+		});
+	}
+
+	const [email, setEmail] = useState("");
+	const [phonenumber, setPhonenumber] = useState("");
+	const [dob, setdob] = useState("");
+	const [name, setName] = useState("");
+	const [passkey, setPasskey] = useState("");
 
 	const onSubmit = async () => {
-		if (email === '' || phonenumber === '' || dob === '' || name === ''|| passkey === '') {
+		if (
+			email === "" ||
+			phonenumber === "" ||
+			dob === "" ||
+			name === "" ||
+			passkey === ""
+		) {
 			console.log(email, phonenumber, dob, name, passkey);
 			toast.error("all fields are required");
 			return;
@@ -39,8 +42,10 @@ function Registerpage() {
 			await ins.methods
 				.register(name, phonenumber, dob, email)
 				.send({ from: accts[0] });
-			localStorage.setItem('passkey', passkey);
-			await ins.methods.register(name,phonenumber,dob,email).send({from: accts[0]});
+			localStorage.setItem("passkey", passkey);
+			await ins.methods
+				.register(name, phonenumber, dob, email)
+				.send({ from: accts[0] });
 			console.log("registered");
 		} catch (error) {
 			toast.error("error in registering, please try again");
@@ -53,7 +58,7 @@ function Registerpage() {
 			<Center h="100vh">
 				<Box borderRadius={5} w="1000px" h="500px" p={8}>
 					<div className="mt-10">
-						<h1 className="text-9xl font-bold">REGISTER</h1>
+						<h1 className="text-9xl font-bold text-text-accent-1">REGISTER</h1>
 						<p className="text-3xl text-gray-400 pl-2 w-4/5">
 							We assure you, no one other than you has access to your data
 						</p>
@@ -133,9 +138,7 @@ function Registerpage() {
 						/>
 					</FormControl>
 					<FormControl isRequired>
-						<p className="text-gray-600 font-medium mb-2 pl-1">
-							Passkey :{" "}
-						</p>
+						<p className="text-gray-600 font-medium mb-2 pl-1">Passkey : </p>
 						<Input
 							onChange={(e) => setPasskey(e.target.value)}
 							value={passkey}

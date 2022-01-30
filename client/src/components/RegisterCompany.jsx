@@ -29,7 +29,7 @@ export function RegisterCompany() {
 					</Heading> */}
 
 					<FormControl isRequired>
-						<p className="text-gray-600 font-medium mb-2 pl-1">
+						<p className="text-gray-600 font-medium mb-2 pl-1 ">
 							Company Name :{" "}
 						</p>
 						<Input
@@ -90,7 +90,9 @@ export function RegisterCompany() {
 				</Box>
 				<Box borderRadius={5} w="1000px" h="500px" p={8}>
 					<div className=" ml-20">
-						<h1 className="text-8xl font-bold">Come Join Us.</h1>
+						<h1 className="text-8xl font-bold text-text-accent-1">
+							Come Join Us.
+						</h1>
 						<p className="text-3xl text-gray-400 pl-2 mt-5 w-4/5">
 							After registering the company you will be able to request for the
 							user's data.

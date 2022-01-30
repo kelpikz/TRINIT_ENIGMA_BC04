@@ -17,6 +17,27 @@ const getFileReaderWordArray = (file) => {
 	});
 };
 
+export const generateKeys = () => {
+	const userData = {
+		name: "alice",
+		email: "alice@can.do",
+	};
+	return new Promise((resolve, reject) => {
+		openpgp
+			.generateKey({
+				userIDs: [userData],
+				curve: "ed25519",
+				passphrase: "password",
+				format: "armored",
+			})
+			.then(function (key) {
+				// console.log(key);
+				resolve(key);
+			})
+			.catch((err) => reject(err));
+	});
+};
+
 // Encrypts msg given public key
 const encryptWithGivenKey = async (publicKey, payload) => {
 	const publicKeyParsed = await openpgp.readKey({ armoredKey: publicKey });
